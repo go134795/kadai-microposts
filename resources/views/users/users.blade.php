@@ -2,9 +2,7 @@
     <ul class="media-list">
         @foreach ($users as $user)
             <li class="media">
-                <img class="media-object rounder" src="{{ Gravatar::src=($user->email, 50) }}" 
-                    alt="">
-                
+                <img class="media-object rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
                 <div class="media-body ml-3">
                     <div>
                         {{ $user->name }}
@@ -14,7 +12,7 @@
                     </div>
                 </div>
             </li>
-        @endsection
-    </ul>
+        @endforeach
+     </ul>
     {{ $users->render('pagination::bootstrap-4') }}
 @endif
