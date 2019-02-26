@@ -1,3 +1,5 @@
+{{--共通レイアウト（全体）--}}
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -8,12 +10,15 @@
     </head>
 
     <body>
-
+        
+        {{--ナビゲーションバー--}}
         @include('commons.navbar')
         
         <div class="container">
+            {{--エラーメッセージ--}}
             @include('commons.error_messages')
             
+            {{--@sectionが入る--}}
             @yield('content')
         </div>
         

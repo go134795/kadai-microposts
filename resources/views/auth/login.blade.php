@@ -1,5 +1,10 @@
+{{--ログインページ--}}
+
+{{--共通レイアウト--}}
 @extends('layouts.app')
 
+
+{{--共通レイアウト（yieldに入る）--}}
 @section('content')
     <div class="text-center">
         <h1>Log in</h1>
@@ -22,6 +27,7 @@
                 {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
 
+            {{--ユーザー登録へのリンク（Sign up）--}}
             <p class="mt-2">New user? {!! link_to_route('signup.get', 'Sign up now!') !!}</p>
         </div>
     </div>

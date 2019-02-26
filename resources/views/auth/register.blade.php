@@ -1,5 +1,9 @@
+{{--ユーザー登録（登録ページ）--}}
+
+{{--共通レイアウト（全体）--}}
 @extends('layouts.app')
 
+{{--共通レイアウト（yieldに入る）--}}
 @section('content')
     <div class="text-center">
         <h1>Sign up</h1>

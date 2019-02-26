@@ -88,4 +88,49 @@ class User extends Authenticatable
         
         return Micropost::whereIn('user_id', $follow_user_ids);
     }
+    
+    //お気に入り一覧取得　（Userモデル）
+    public function favorites()
+    {
+        return $this->belongsToMany(Micropost::class, 'favorites', 'user_id', 'micropost_id')->withTimestamps();
+    }
+    
+    public function favorite($micropost_id)
+    {
+        //お気に入りしているかの確認
+        $exist = $this->is_favorite($micropost_id);
+        
+        if ($exist)
+        {
+            return false;
+        }
+        else 
+        {
+            //お気に入りに追加
+            $this->favorites()->attach($micropost_id);
+            return true;
+        }
+    }
+    
+    public function unfavorite($micropost_id)
+    {
+        //お気に入り確認
+        $exist = $this->is_favorite($micropost_id);
+        
+        if ($exist)
+        {
+            //お気に入りから外す
+            $this->favorites()->detach($micropost_id);
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+    
+    public function is_favorite($micropost_id)
+    {
+        return $this->favorites()->where('micropost_id',$micropost_id)->exists();
+    }
 }

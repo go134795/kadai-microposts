@@ -1,3 +1,5 @@
+{{--共通レイアウト（ユーザー名、Gravatar）--}}
+
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">{{ $user->name }}</h3>

@@ -1,16 +1,25 @@
+{{--共通レイアウト（ナビゲーションタブ）--}}
 <ul class="nav nav-tabs nav-justified mb-3">
+    
+    {{--Timeline--}}
     <li class="nav-item">
         <a href="{{ route('users.show', ['id' => $user->id]) }}"
 class="nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">Timeline
         <span class="badge badge-secondary">{{ $count_microposts }}</span>
         </a></li>
         
+    {{--Followings--}}
     <li class="nav-item">
         <a href="{{ route('users.followings', ['id' => $user->id]) }}"
 class="nav-link {{ Request::is('users/*/followings') ? 'active' : '' }}">Followings
                 <span class="badge badge-secondary">{{ $count_followings }}</span></a></li>
     
+    {{--Followers--}}
     <li class="nav-item"><a href="{{ route('users.followers', ['id' => $user->id]) }}"
 class="nav-link {{ Request::is('users/*/followers') ? 'active' : '' }}">Followers
         <span class="badge badge-secondary">{{ $count_followers }}</span></a></li>
-</ul>
+
+    {{--Favorites--}}
+    <li class="nav-item"><a href="{{ route('users.favorites', ['id' => $user->id]) }}"
+class="nav-link {{ Request::is('users/*/favorites') ? 'active' : '' }}">Favorites
+        <span class="badge badge-secondary">{{ $count_favorites }}</span></a></li></ul>
